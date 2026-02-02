@@ -111,7 +111,9 @@ const ProductSchema = new Schema<IProduct>(
   },
   {
     timestamps: true, // adds createdAt & updatedAt
+    versionKey: false,
   },
 );
 
-export const Product = mongoose.model<IProduct>("Product", ProductSchema);
+export const Product =
+  mongoose.models.Product || mongoose.model<IProduct>("Product", ProductSchema);

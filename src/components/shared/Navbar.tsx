@@ -7,8 +7,16 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Menu } from "lucide-react";
 import Link from "next/link";
+import NavLink from "../buttons/NavLink";
 
 const Navbar = () => {
+  const navItems = [
+    { label: "Home", href: "/" },
+    { label: "Products", href: "/products" },
+    { label: "Blogs", href: "/blogs" },
+    { label: "Contact", href: "/contact" },
+  ];
+
   return (
     <nav className="w-full border-b bg-background">
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
@@ -19,29 +27,19 @@ const Navbar = () => {
 
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center gap-6">
-          <Link href="/" className="text-sm font-medium hover:text-primary">
-            Home
-          </Link>
-          <Link
-            href="/about"
-            className="text-sm font-medium hover:text-primary"
-          >
-            About
-          </Link>
-          <Link
-            href="/projects"
-            className="text-sm font-medium hover:text-primary"
-          >
-            Projects
-          </Link>
-          <Link
-            href="/contact"
-            className="text-sm font-medium hover:text-primary"
-          >
-            Contact
-          </Link>
+          {navItems.map((item) => (
+            <NavLink
+              key={item.href}
+              href={item.href}
+              className="text-sm font-medium hover:text-primary"
+            >
+              {item.label}
+            </NavLink>
+          ))}
 
-          <Button size="sm">Login</Button>
+          <Button size="sm" asChild>
+            <Link href="/login">Login</Link>
+          </Button>
         </div>
 
         {/* Mobile Menu */}
@@ -54,23 +52,11 @@ const Navbar = () => {
             </DropdownMenuTrigger>
 
             <DropdownMenuContent align="end">
-              <DropdownMenuItem asChild>
-                <Link href="/">Home</Link>
-              </DropdownMenuItem>
-              <DropdownMenuItem asChild>
-                <Link href="/about">About</Link>
-              </DropdownMenuItem>
-              <DropdownMenuItem asChild>
-                <Link href="/projects">Projects</Link>
-              </DropdownMenuItem>
-              <DropdownMenuItem asChild>
-                <Link href="/contact">Contact</Link>
-              </DropdownMenuItem>
-              <DropdownMenuItem>
-                <Button className="w-full" size="sm">
-                  Login
-                </Button>
-              </DropdownMenuItem>
+              {navItems.map((item) => (
+                <DropdownMenuItem asChild key={item.href}>
+                  <Link href={item.href}>{item.label}</Link>
+                </DropdownMenuItem>
+              ))}
             </DropdownMenuContent>
           </DropdownMenu>
         </div>
