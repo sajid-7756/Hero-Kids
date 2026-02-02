@@ -5,7 +5,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Menu } from "lucide-react";
+import { Menu, ShoppingCart } from "lucide-react";
 import Link from "next/link";
 import NavLink from "../buttons/NavLink";
 
@@ -38,6 +38,11 @@ const Navbar = () => {
           ))}
 
           <Button size="sm" asChild>
+            <Link href="/login">
+              <ShoppingCart />
+            </Link>
+          </Button>
+          <Button size="sm" asChild>
             <Link href="/login">Login</Link>
           </Button>
         </div>
@@ -57,6 +62,9 @@ const Navbar = () => {
                   <Link href={item.href}>{item.label}</Link>
                 </DropdownMenuItem>
               ))}
+              <Button className="w-full" size="sm" asChild>
+                <Link href="/login">Login</Link>
+              </Button>
             </DropdownMenuContent>
           </DropdownMenu>
         </div>

@@ -1,3 +1,4 @@
+import localFont from "next/font/local";
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
@@ -6,6 +7,10 @@ import Footer from "@/components/shared/Footer";
 
 const poppins = Poppins({
   weight: ["100", "200", "300", "400", "500", "600", "800"],
+});
+
+const banglaFont = localFont({
+  src: "./../fonts/mayaboti-normal.ttf",
 });
 
 export const metadata: Metadata = {
@@ -20,7 +25,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${poppins.className} antialiased`}>
+      <body
+        className={`${poppins.className} ${banglaFont.className} antialiased`}
+      >
         <header>
           <Navbar />
         </header>

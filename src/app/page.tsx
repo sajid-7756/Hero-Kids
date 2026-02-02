@@ -1,11 +1,17 @@
 import Container from "@/components/common/Container";
-import Link from "next/link";
+import Banner from "@/components/home/Banner";
+import Products from "./products/page";
 
 export default function Home() {
   return (
-    <>
-      <Container>asdf</Container>
-      <Link href={'/click'}>Click me</Link>
-    </>
+    <Container>
+      <section>
+        <Banner />
+      </section>
+
+      <section>
+        <Products />
+      </section>
+    </Container>
   );
 }
