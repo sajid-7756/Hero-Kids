@@ -28,17 +28,7 @@ export default function RootLayout({
       <body
         className={`${poppins.className} ${banglaFont.className} antialiased`}
       >
-        <header>
-          <Navbar />
-        </header>
-
-        <main className="min-h-screen flex flex-col justify-between mx-auto">
-          {children}
-        </main>
-
-        <footer>
-          <Footer />
-        </footer>
+        {children}
       </body>
     </html>
   );

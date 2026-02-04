@@ -1,16 +1,13 @@
 import Container from "@/components/common/Container";
-import products from "../../../data/toys.json";
-import ProductCard from "@/components/cards/ProductCard";
+import ProductCardSkeleton from "./_components/ProductCardSkeleton";
 
-const Products = () => {
+const loading = () => {
   return (
     <section className="py-12">
       <Container>
         {/* Heading */}
         <div className="mb-8 text-center">
-          <h2 className="text-3xl font-bold md:text-4xl">
-            Our Products
-          </h2>
+          <h2 className="text-3xl font-bold md:text-4xl">Our Products</h2>
           <p className="mt-2 text-muted-foreground">
             Fun, safe & educational toys for kids
           </p>
@@ -18,11 +15,8 @@ const Products = () => {
 
         {/* Grid */}
         <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
-          {products.map((product) => (
-            <ProductCard
-              key={product.title}
-              product={product}
-            />
+          {Array.from({ length: 18 }).map((_, i) => (
+            <ProductCardSkeleton key={i} />
           ))}
         </div>
       </Container>
@@ -30,4 +24,4 @@ const Products = () => {
   );
 };
 
-export default Products;
+export default loading;
