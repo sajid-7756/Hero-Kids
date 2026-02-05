@@ -3,6 +3,31 @@ import { getAllProducts } from "@/services/productService";
 import { Suspense } from "react";
 import ProductCardSkeleton from "./_components/ProductCardSkeleton";
 import ProductsList from "./_components/ProductList";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Our Products",
+
+  description:
+    "Explore our collection of educational toys, learning tools and fun kids products.",
+
+  openGraph: {
+    title: "HeroKids Products",
+    description: "Discover educational toys and kids learning products.",
+    images: [
+      {
+        url: "https://i.ibb.co.com/NdWJ7JK9/products-preview.png",
+        width: 1200,
+        height: 630,
+      },
+    ],
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    images: ["https://i.ibb.co.com/NdWJ7JK9/products-preview.png"],
+  },
+};
 
 const Products = () => {
   const productsPromise = getAllProducts();

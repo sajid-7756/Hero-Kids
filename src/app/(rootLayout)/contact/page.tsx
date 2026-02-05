@@ -1,5 +1,9 @@
 import Container from '@/components/common/Container'
-import React from 'react'
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Contact',
+}
 
 const Contact = () => {
   return (

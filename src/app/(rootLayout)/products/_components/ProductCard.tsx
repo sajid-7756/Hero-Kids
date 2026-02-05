@@ -3,6 +3,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Star } from "lucide-react";
 import { IProduct } from "@/models/product.model";
+import Link from "next/link";
 
 const ProductCard = ({ product }: { product: IProduct }) => {
   const discountedPrice =
@@ -53,9 +54,11 @@ const ProductCard = ({ product }: { product: IProduct }) => {
         </div>
 
         {/* Button */}
-        <Button className="w-full" size="sm">
-          View Details
-        </Button>
+        <Link href={`/products/${product?._id as unknown as string}`}>
+          <Button className="w-full" size="sm">
+            View Details
+          </Button>
+        </Link>
       </CardContent>
     </Card>
   );

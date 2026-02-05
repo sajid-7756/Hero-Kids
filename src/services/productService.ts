@@ -8,3 +8,11 @@ export async function getAllProducts(): Promise<IProduct[]> {
 
   return JSON.parse(JSON.stringify(products));
 }
+
+export async function getSingleProduct(id: string): Promise<IProduct> {
+  await dbConnect();
+
+  const product = await Product.findById(id).lean();
+
+  return JSON.parse(JSON.stringify(product));
+}
