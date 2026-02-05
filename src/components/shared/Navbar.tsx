@@ -8,6 +8,8 @@ import {
 import { Menu, ShoppingCart } from "lucide-react";
 import Link from "next/link";
 import NavLink from "../buttons/NavLink";
+import AddToCartBtn from "../../app/(rootLayout)/products/[id]/_components/AddToCartBtn";
+import ShoppingCartBtn from "../buttons/ShoppingCartBtn";
 
 const Navbar = () => {
   const navItems = [
@@ -37,11 +39,9 @@ const Navbar = () => {
             </NavLink>
           ))}
 
-          <Button size="sm" asChild>
-            <Link href="/login">
-              <ShoppingCart />
-            </Link>
-          </Button>
+          {/* Shopping Cart Button  */}
+          <ShoppingCartBtn />
+
           <Button size="sm" asChild>
             <Link href="/login">Login</Link>
           </Button>

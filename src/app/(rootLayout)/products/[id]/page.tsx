@@ -3,6 +3,7 @@ import { getSingleProduct } from "@/services/productService";
 import Container from "@/components/common/Container";
 import { Button } from "@/components/ui/button";
 import { Star } from "lucide-react";
+import AddToCartBtn from "@/app/(rootLayout)/products/[id]/_components/AddToCartBtn";
 
 export async function generateMetadata({ params }: { params: { id: string } }) {
   const { id } = await params;
@@ -86,7 +87,7 @@ const ProductDetails = async ({ params }: { params: { id: string } }) => {
 
             {/* Actions */}
             <div className="flex gap-3">
-              <Button size="lg">Add to Cart</Button>
+              <AddToCartBtn product={product} />
               <Button variant="outline" size="lg">
                 Buy Now
               </Button>
