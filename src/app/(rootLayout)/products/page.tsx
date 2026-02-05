@@ -1,8 +1,12 @@
 import Container from "@/components/common/Container";
-import products from "@/../data/toys.json";
-import ProductCard from "@/app/(rootLayout)/products/_components/ProductCard";
+import { getAllProducts } from "@/services/productService";
+import { Suspense } from "react";
+import ProductCardSkeleton from "./_components/ProductCardSkeleton";
+import ProductsList from "./_components/ProductList";
 
 const Products = () => {
+  const productsPromise = getAllProducts();
+
   return (
     <section className="py-12">
       <Container>
@@ -15,11 +19,17 @@ const Products = () => {
         </div>
 
         {/* Grid */}
-        <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
-          {products.map((product) => (
-            <ProductCard key={product.title} product={product} />
-          ))}
-        </div>
+        <Suspense
+          fallback={
+            <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
+              {Array.from({ length: 8 }).map((_, i) => (
+                <ProductCardSkeleton key={i} />
+              ))}
+            </div>
+          }
+        >
+          <ProductsList productsPromise={productsPromise} />
+        </Suspense>
       </Container>
     </section>
   );

@@ -2,34 +2,9 @@ import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Star } from "lucide-react";
+import { IProduct } from "@/models/product.model";
 
-export type Product = {
-  title: string;
-  bangla: string;
-  image: string;
-
-  youtube?: string;
-
-  price: number;
-  discount: number;
-
-  sizes: string[];
-  color: string[];
-
-  description: string;
-  qna: {
-    question: string;
-    answer: string;
-  }[];
-
-  reviews: number;
-  sold: number;
-  ratings: number;
-
-  info: string[];
-};
-
-const ProductCard = ({ product }: { product: Product }) => {
+const ProductCard = ({ product }: { product: IProduct }) => {
   const discountedPrice =
     product.price - (product.price * product.discount) / 100;
 
