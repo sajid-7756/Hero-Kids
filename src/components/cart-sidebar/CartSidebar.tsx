@@ -14,7 +14,6 @@ const CartSidebar = ({
   cart: CartItem[];
   subtotal: number;
 }) => {
-  console.log(cart);
   return (
     <SheetContent side="right" className="w-120 p-5">
       <SheetHeader>

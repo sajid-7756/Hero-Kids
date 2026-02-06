@@ -1,9 +1,9 @@
 import Image from "next/image";
 import { getSingleProduct } from "@/services/productService";
 import Container from "@/components/common/Container";
-import { Button } from "@/components/ui/button";
 import { Star } from "lucide-react";
 import AddToCartBtn from "@/app/(rootLayout)/products/[id]/_components/AddToCartBtn";
+import BuyNowBtn from "@/components/buttons/buy-now/BuyNowBtn";
 
 export async function generateMetadata({ params }: { params: { id: string } }) {
   const { id } = await params;
@@ -88,9 +88,7 @@ const ProductDetails = async ({ params }: { params: { id: string } }) => {
             {/* Actions */}
             <div className="flex gap-3">
               <AddToCartBtn product={product} />
-              <Button variant="outline" size="lg">
-                Buy Now
-              </Button>
+              <BuyNowBtn product={product} />
             </div>
 
             {/* Info Highlights */}

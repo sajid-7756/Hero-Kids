@@ -6,6 +6,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useForm } from "react-hook-form";
+import { useRouter } from "next/navigation";
+import { UserResponse } from "@/types/user-types";
 
 type RegisterFormValues = {
   name: string;
@@ -19,9 +21,29 @@ export default function RegisterPage() {
     handleSubmit,
     formState: { errors, isSubmitting },
   } = useForm<RegisterFormValues>();
+  const router = useRouter();
 
   const onClick = async (data: RegisterFormValues) => {
-    console.log(data);
+    try {
+      const res = await fetch("/api/auth/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      const result: UserResponse = await res.json();
+
+      if (result.success) {
+        alert("Registration successful! Now login.");
+        router.push("/login");
+      } else {
+        alert(result.message || "Registration failed");
+      }
+    } catch (error: unknown) {
+      const message =
+        error instanceof Error ? error.message : "Something went wrong";
+      alert(message);
+    }
   };
 
   return (

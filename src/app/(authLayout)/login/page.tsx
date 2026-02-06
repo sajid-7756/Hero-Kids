@@ -6,6 +6,8 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
+import { useRouter } from "next/navigation";
+import { UserResponse } from "@/types/user-types";
 
 type LoginFormValues = {
   email: string;
@@ -18,9 +20,29 @@ export default function LoginPage() {
     handleSubmit,
     formState: { errors, isSubmitting },
   } = useForm<LoginFormValues>();
+  const router = useRouter();
 
   const onSubmit = async (data: LoginFormValues) => {
-    console.log(data);
+    try {
+      const res = await fetch("/api/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      const result: UserResponse = await res.json();
+
+      if (result.success) {
+        alert("Login success");
+        router.push("/");
+      } else {
+        alert(result.message || "Login failed");
+      }
+    } catch (error: unknown) {
+      const message =
+        error instanceof Error ? error.message : "Something went wrong";
+      alert(message);
+    }
   };
 
   return (
