@@ -75,8 +75,7 @@ export const metadata: Metadata = {
 
     title: "HeroKids - Educational Toys",
 
-    description:
-      "Discover fun and safe educational toys for kids.",
+    description: "Discover fun and safe educational toys for kids.",
 
     images: ["https://i.ibb.co.com/357kgMW6/home-preview.png"],
   },
@@ -93,7 +92,6 @@ export const metadata: Metadata = {
     "theme-color": "#ffffff",
   },
 };
-
 
 export default function RootLayout({
   children,

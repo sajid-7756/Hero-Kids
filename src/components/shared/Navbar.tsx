@@ -5,18 +5,22 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Menu, ShoppingCart } from "lucide-react";
+import { Menu } from "lucide-react";
 import Link from "next/link";
 import NavLink from "../buttons/NavLink";
-import AddToCartBtn from "../../app/(rootLayout)/products/[id]/_components/AddToCartBtn";
 import ShoppingCartBtn from "../buttons/ShoppingCartBtn";
+import AuthButtons from "../buttons/AuthButtons";
+import { getCurrentUser } from "@/lib/auth";
 
-const Navbar = () => {
+const Navbar = async () => {
+  const session = await getCurrentUser();
+
   const navItems = [
     { label: "Home", href: "/" },
     { label: "Products", href: "/products" },
     { label: "Blogs", href: "/blogs" },
     { label: "Contact", href: "/contact" },
+    { label: "Profile", href: "/profile" },
   ];
 
   return (
@@ -42,9 +46,8 @@ const Navbar = () => {
           {/* Shopping Cart Button  */}
           <ShoppingCartBtn />
 
-          <Button size="sm" asChild>
-            <Link href="/login">Login</Link>
-          </Button>
+          {/* Auth Buttons */}
+          <AuthButtons session={session} />
         </div>
 
         {/* Mobile Menu */}
@@ -62,9 +65,9 @@ const Navbar = () => {
                   <Link href={item.href}>{item.label}</Link>
                 </DropdownMenuItem>
               ))}
-              <Button className="w-full" size="sm" asChild>
-                <Link href="/login">Login</Link>
-              </Button>
+
+              {/* Auth Buttons */}
+              <AuthButtons session={session} />
             </DropdownMenuContent>
           </DropdownMenu>
         </div>

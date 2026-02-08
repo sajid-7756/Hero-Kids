@@ -19,7 +19,7 @@ export async function POST(req: Request) {
         { status: 400 },
       );
     }
-    
+
     await dbConnect();
 
     const user: IUser | null = await User.findOne({ email });
@@ -47,8 +47,9 @@ export async function POST(req: Request) {
     }
 
     const token = await new SignJWT({
-      userId: user?._id,
+      userId: user?._id.toString(),
       role: user?.role,
+      name: user?.name,
     })
       .setProtectedHeader({ alg: "HS256" })
       .setExpirationTime("7d")

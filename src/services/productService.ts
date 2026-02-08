@@ -1,5 +1,6 @@
 import dbConnect from "@/lib/dbConnect";
 import { IProduct, Product } from "@/models/product.model";
+import { unstable_cache } from "next/cache";
 
 export async function getAllProducts(): Promise<IProduct[]> {
   await dbConnect();
@@ -9,10 +10,12 @@ export async function getAllProducts(): Promise<IProduct[]> {
   return JSON.parse(JSON.stringify(products));
 }
 
-export async function getSingleProduct(id: string): Promise<IProduct> {
-  await dbConnect();
-
-  const product = await Product.findById(id).lean();
-
-  return JSON.parse(JSON.stringify(product));
-}
+export const getSingleProduct = unstable_cache(
+  async (id: string): Promise<IProduct> => {
+    await dbConnect();
+    const product = await Product.findById(id).lean();
+    return JSON.parse(JSON.stringify(product));
+  },
+  ["product"],
+  { revalidate: 3600, tags: ["products"] },
+);

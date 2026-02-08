@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { UserResponse } from "@/types/user-types";
 
 type LoginFormValues = {
@@ -21,6 +21,9 @@ export default function LoginPage() {
     formState: { errors, isSubmitting },
   } = useForm<LoginFormValues>();
   const router = useRouter();
+  // const searchParams = useSearchParams();
+
+  // const callbackUrl = searchParams.get("callbackUrl") || "/";
 
   const onSubmit = async (data: LoginFormValues) => {
     try {
@@ -34,7 +37,8 @@ export default function LoginPage() {
 
       if (result.success) {
         alert("Login success");
-        router.push("/");
+        router.refresh();
+        // router.replace(callbackUrl);
       } else {
         alert(result.message || "Login failed");
       }

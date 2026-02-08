@@ -48,8 +48,9 @@ const ProductDetails = async ({ params }: { params: { id: string } }) => {
             <Image
               src={product.image}
               alt={product.title}
-              fill
-              className="object-cover"
+              width={500}
+              height={500}
+              className=" h-auto w-auto"
               priority
             />
           </div>
