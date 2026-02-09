@@ -10,13 +10,8 @@ import Link from "next/link";
 import NavLink from "../buttons/NavLink";
 import ShoppingCartBtn from "../buttons/ShoppingCartBtn";
 import AuthButtons from "../buttons/AuthButtons";
-import { getCurrentUser } from "@/lib/auth";
 
 const Navbar = () => {
-
-
-  // const session = await getCurrentUser();
-
   const navItems = [
     { label: "Home", href: "/" },
     { label: "Products", href: "/products" },
@@ -49,7 +44,6 @@ const Navbar = () => {
           <ShoppingCartBtn />
 
           {/* Auth Buttons */}
-          {/* <AuthButtons session={session} /> */}
           <AuthButtons />
         </div>
 
@@ -70,7 +64,7 @@ const Navbar = () => {
               ))}
 
               {/* Auth Buttons */}
-              {/* <AuthButtons session={session} /> */}
+              <AuthButtons />
             </DropdownMenuContent>
           </DropdownMenu>
         </div>
