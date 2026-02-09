@@ -7,7 +7,7 @@ import Container from "@/components/common/Container";
 import BlogCardSkeleton from "./_components/BlogCardSkeleton";
 
 export const metadata: Metadata = {
-  title: "Blogs | Hero Kids",
+  title: "Blogs",
   description:
     "Explore our latest stories, tips, and insights about kids' health, education, and creativity.",
 };

@@ -39,6 +39,8 @@ export default function Login() {
         alert("Login success");
         router.refresh();
         router.push(callbackUrl);
+        // eslint-disable-next-line react-hooks/immutability
+        window.location.href = callbackUrl;
       } else {
         alert(result.message || "Login failed");
       }
@@ -96,7 +98,10 @@ export default function Login() {
           {/* Footer */}
           <p className="mt-6 text-center text-sm text-muted-foreground">
             Do not Have an account?{" "}
-            <Link href={`/sign-up?callbackUrl=${callbackUrl}`} className="font-medium underline">
+            <Link
+              href={`/sign-up?callbackUrl=${callbackUrl}`}
+              className="font-medium underline"
+            >
               Sign Up
             </Link>
           </p>
