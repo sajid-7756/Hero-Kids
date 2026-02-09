@@ -23,7 +23,7 @@ const LogoutBtn = ({ variant }: LogOutButtonProps) => {
       const result = await res.json();
 
       if (res.ok && result.success) {
-        window.location.href = "/login";
+        window.location.href = "/";
       } else {
         alert("Logout failed on the server");
       }
