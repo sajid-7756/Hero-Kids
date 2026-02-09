@@ -13,7 +13,7 @@ import AuthButtons from "../buttons/AuthButtons";
 import { getCurrentUser } from "@/lib/auth";
 
 const Navbar = async () => {
-  const session = await getCurrentUser();
+  // const session = await getCurrentUser();
 
   const navItems = [
     { label: "Home", href: "/" },
@@ -47,7 +47,7 @@ const Navbar = async () => {
           <ShoppingCartBtn />
 
           {/* Auth Buttons */}
-          <AuthButtons session={session} />
+          {/* <AuthButtons session={session} /> */}
         </div>
 
         {/* Mobile Menu */}
@@ -67,7 +67,7 @@ const Navbar = async () => {
               ))}
 
               {/* Auth Buttons */}
-              <AuthButtons session={session} />
+              {/* <AuthButtons session={session} /> */}
             </DropdownMenuContent>
           </DropdownMenu>
         </div>

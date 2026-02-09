@@ -4,7 +4,6 @@ import { IBlog } from "@/models/blog.model";
 import { use } from "react";
 
 const BlogList = ({ blogPromise }: { blogPromise: Promise<IBlog[]> }) => {
-  console.log(blogPromise);
 
   const blogs: IBlog[] = use(blogPromise);
   return (
