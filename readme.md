@@ -76,7 +76,7 @@ This project features a **fully custom authentication engine** built from the gr
    npm run dev
    ```
 
-Visit [http://localhost:3000](http://localhost:3000) to see the application.
+Visit https://hero-kids-mu.vercel.app/ to see the application.
 
 ---
 
