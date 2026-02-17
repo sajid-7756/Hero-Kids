@@ -36,7 +36,7 @@ This project features a **fully custom authentication engine** built from the gr
 - **Frontend**: [Next.js 16](https://nextjs.org/) (App Router), [React 19](https://react.dev/)
 - **Styling**: [Tailwind CSS 4](https://tailwindcss.com/)
 - **Database**: [MongoDB](https://www.mongodb.com/) with [Mongoose](https://mongoosejs.com/)
-- **State Management**: [Zustand](https://github.com/pmndrs/zustand) & [SWR](https://swr.vercel.app/)
+- **State Management**: [Zustand](https://github.com/pmndrs/zustand)
 - **Icons**: [Lucide React](https://lucide.dev/)
 
 ---
@@ -52,7 +52,7 @@ This project features a **fully custom authentication engine** built from the gr
 
 1. Clone the repository:
    ```bash
-   git clone [https://github.com/sajid-7756/Hero-Kids?tab=readme-ov-file#-custom-authentication-system]
+   git clone https://github.com/sajid-7756/Hero-Kids?tab=readme-ov-file#-custom-authentication-system
    ```
 
 2. Install dependencies:
